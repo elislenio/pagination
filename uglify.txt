@@ -1,0 +1,4 @@
+uglifyjs src/dl-paginator.js src/dl-twbs-paginator.js --source-map -o dist/dl-paginator.min.js -c -m --comments
+
+-- jqueryui widget bundle
+uglifyjs src/widget.js src/dl-paginator.js src/dl-twbs-paginator.js --source-map -o dist/dl-paginator-widget-bundle.min.js -c -m --comments

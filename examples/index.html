@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pagination widget</title>
+        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <style>
+            .page-info{
+                line-height: 2.5;
+            }
+            .page-fg label {
+                display: inline;
+            }
+            .page-fg select {
+                display: inline;
+                width: inherit;
+            }
+            .pagination {
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            .form-group {
+                margin-bottom: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <article>
+
+                <div class="row">
+                    <div class="col">
+                        <h2>Example</h2>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div id="div1"></div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div id="div2"></div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div id="div3"></div>
+                            </div>
+                            <div class="col-lg-2">
+                                <div id="div4"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="/node_modules/jquery-ui/ui/widget.js"></script>
+        <script src="/dist/dl-paginator.min.js"></script>
+        <!-- <script src="/src/dl-paginator.js"></script> -->
+        <!-- <script src="/src/dl-twbs-paginator.js"></script> -->
+        <script>
+
+            var options = {
+                debug: false,
+                currentPage: 1,
+                offset: 0,
+                pageSize: 10,
+                maxPages: 5,
+                totalRecordCount: 500,
+                first: '&lt;&lt;',
+                previous: '&lt;',
+                pages: true,
+                next: '&gt;',
+                last: '&gt;&gt;',
+                onPageChange: function (number, offset, data) {
+                    mockPageChange(number, offset, data);
+                },
+                onPageSizeChange: function (size, number, offset, data) {
+                    mockPageSizeChange(size, number, offset, data);
+                },
+                onLoad: function (data, pageSizeInput, gotoPageInput) {
+
+                    // Place additional elements wherever wanted
+                    var span = $('<span class="page-info">').html(data.info);
+                    $('#div2').html(span);
+
+                    var $pageSizeInputFG = $('<div class="page-fg">')
+                            .addClass('form-group')
+                            .append('<label for="dl_page_size">Page size: </label>')
+                            .append(pageSizeInput);
+
+                    $('#div3').html($pageSizeInputFG);
+
+                    var $gotoPageInputFG = $('<div class="page-fg">')
+                            .addClass('form-group')
+                            .append('<label for="dl_go_to_page">Go to page: </label>')
+                            .append(gotoPageInput);
+
+                    $('#div4').html($gotoPageInputFG);
+                }
+            };
+
+            function mockPageChange(number, offset, data) {
+                options.currentPage = number;
+                options.offset = offset;
+                $('#div1').twbspaginator('reload', options);
+            }
+
+            function mockPageSizeChange(size, number, offset, data) {
+                options.pageSize = size;
+                options.currentPage = number;
+                options.offset = offset;
+                $('#div1').twbspaginator('reload', options);
+            }
+
+            $(document).ready(function () {
+                $('#div1').twbspaginator(options);
+            });
+        </script>
+    </body>
+</html>

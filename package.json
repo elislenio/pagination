@@ -1,0 +1,33 @@
+{
+  "name": "pagination",
+  "version": "1.0.0",
+  "description": "Pagination widget for JQuery",
+  "author": "Guido M. Donnari",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elislenio/pagination.git"
+  },
+  "keywords": [
+    "jquery",
+    "widget",
+    "pagination"
+  ],
+  "bugs": {
+    "url": "https://github.com/elislenio/pagination/issues"
+  },
+  "homepage": "https://github.com/elislenio/pagination#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^3.4.1",
+    "jquery": "^3.4.1",
+    "jquery-ui": "^1.12.1"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-jshint": "^2.1.0",
+    "grunt-contrib-uglify": "^4.0.1"
+  }
+}
